@@ -7,19 +7,43 @@ namespace WebApi.Controllers;
 [Route("api/produto")]
 public class ProdutoController : ControllerBase
 {
-    private List<Produto> produtos = new List<Produto>();
+    private static List<Produto> produtos = new List<Produto>();
+
     //GET: api/produto/listar
     [HttpGet]
     [Route("listar")]
-    public string Listar()
-    {
-        return "Hello World de uma API em C# com Watch";
-    }
+    public IActionResult Listar() =>
+        produtos.Count == 0 ? NotFound() : Ok(produtos);
 
     [HttpPost]
     [Route("cadastrar")]
-    public Produto Cadastrar(Produto produto)
+    public IActionResult Cadastrar([FromBody] Produto produto)
     {
-        return produto;
+        produtos.Add(produto);
+        return Created("", produto);
+    }
+
+    [HttpGet]
+    [Route("buscar/{nome}")]
+    public IActionResult Buscar([FromRoute] string nome)
+    {
+        foreach (Produto produtoCadatrado in produtos)
+        {
+            if (produtoCadatrado.Nome == nome)
+            {
+                return Ok(produtoCadatrado);
+            }
+        }
+        return NotFound();
     }
 }
+
+//Listar tradicional
+// {
+//     // if (produtos.Count == 0)
+//     // {
+//     //     return NotFound();
+//     // }
+//     // return Ok(produtos);
+//     return produtos.Count == 0 ? NotFound() : Ok(produtos);
+// }
