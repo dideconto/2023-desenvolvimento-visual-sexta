@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApi.Data;
 using WebApi.Models;
 
 namespace WebApi.Controllers;
@@ -7,19 +8,24 @@ namespace WebApi.Controllers;
 [Route("api/produto")]
 public class ProdutoController : ControllerBase
 {
-    private static List<Produto> produtos = new List<Produto>();
+    private readonly AppDataContext _ctx;
+    public ProdutoController(AppDataContext ctx) => _ctx = ctx;
 
     //GET: api/produto/listar
     [HttpGet]
     [Route("listar")]
-    public IActionResult Listar() =>
-        produtos.Count == 0 ? NotFound() : Ok(produtos);
+    public IActionResult Listar()
+    {
+        List<Produto> produtos = _ctx.Produtos.ToList();
+        return produtos.Count == 0 ? NotFound() : Ok(produtos);
+    }
 
     [HttpPost]
     [Route("cadastrar")]
     public IActionResult Cadastrar([FromBody] Produto produto)
     {
-        produtos.Add(produto);
+        _ctx.Produtos.Add(produto);
+        _ctx.SaveChanges();
         return Created("", produto);
     }
 
@@ -27,7 +33,8 @@ public class ProdutoController : ControllerBase
     [Route("buscar/{nome}")]
     public IActionResult Buscar([FromRoute] string nome)
     {
-        foreach (Produto produtoCadatrado in produtos)
+        //Expressão lambda para buscar um registro na base de dados com EF
+        foreach (Produto produtoCadatrado in _ctx.Produtos.ToList())
         {
             if (produtoCadatrado.Nome == nome)
             {
