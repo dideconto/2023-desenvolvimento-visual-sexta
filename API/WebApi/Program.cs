@@ -1,6 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using WebApi.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<AppDataContext>(
+    options => options.UseSqlite("Data Source=ecommerce.db;Cache=shared")
+);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
