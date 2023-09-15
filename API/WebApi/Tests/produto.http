@@ -11,3 +11,17 @@ Content-Type: application/json
 {
     "nome" : "Arroz"
 }
+
+### Remover produto pelo ID
+DELETE https://localhost:7083/api/produto/deletar/5
+
+### Alterar produto pelo ID
+PUT https://localhost:7083/api/produto/alterar/6
+Content-Type: application/json
+
+{
+    "nome" : "Feijão",
+    "quantidade" : 150,
+    "preco" : 10.5,
+    "descricao" : "Alimento"
+}
