@@ -1,0 +1,24 @@
+### Criação de uma nova categoria
+POST https://localhost:7083/api/categoria/cadastrar
+Content-Type: application/json
+
+{
+    "Nome": "Bebidas"
+}
+
+### Obtenção de todas as categorias
+GET https://localhost:7083/api/categoria/listar
+
+### Obtenção de uma categoria específica pelo ID (substitua {id} pelo ID real)
+GET https://localhost:7083/api/categoria/buscar/Alimento
+
+### Atualização de uma categoria existente pelo ID (substitua {id} pelo ID real)
+PUT https://localhost:7083/api/categoria/alterar/2
+Content-Type: application/json
+
+{
+    "Nome": "Alimentos"
+}
+
+### Exclusão de uma categoria pelo ID (substitua {id} pelo ID real)
+DELETE https://localhost:7083/api/categoria/deletar/1

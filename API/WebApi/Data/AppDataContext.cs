@@ -9,6 +9,7 @@ public class AppDataContext : DbContext
 
     //Classes que vão virar tabelas no banco de dados
     public DbSet<Produto> Produtos { get; set; }
+    public DbSet<Categoria> Categorias { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
