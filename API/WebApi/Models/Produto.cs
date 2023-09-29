@@ -12,5 +12,4 @@ public class Produto
     public DateTime CriadoEm { get; set; }
     public Categoria? Categoria { get; set; }
     public int CategoriaId { get; set; }
-
 }

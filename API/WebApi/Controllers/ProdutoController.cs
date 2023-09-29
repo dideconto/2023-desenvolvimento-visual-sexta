@@ -34,18 +34,22 @@ public class ProdutoController : ControllerBase
     [Route("cadastrar")]
     public IActionResult Cadastrar([FromBody] Produto produto)
     {
-        Guid guid = Guid.NewGuid();
-        Console.WriteLine(guid.ToString());
         try
         {
-            produto.Categoria =
+            Categoria? categoria =
                 _ctx.Categorias.Find(produto.CategoriaId);
+            if (categoria == null)
+            {
+                return NotFound();
+            }
+            produto.Categoria = categoria;
             _ctx.Produtos.Add(produto);
             _ctx.SaveChanges();
             return Created("", produto);
         }
         catch (Exception e)
         {
+            Console.WriteLine(e);
             return BadRequest(e.Message);
         }
     }

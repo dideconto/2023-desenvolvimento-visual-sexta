@@ -3,7 +3,7 @@ POST https://localhost:7083/api/categoria/cadastrar
 Content-Type: application/json
 
 {
-    "Nome": "Bebidas"
+    "Nome": "Alimentos"
 }
 
 ### Obtenção de todas as categorias
