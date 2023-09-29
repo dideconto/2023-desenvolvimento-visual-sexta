@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApi.Data;
+using WebApi.DTOs;
 using WebApi.Models;
 
 namespace WebApi.Controllers;
@@ -21,7 +23,12 @@ public class ProdutoController : ControllerBase
     {
         try
         {
-            List<Produto> produtos = _ctx.Produtos.ToList();
+            //Include
+            List<Produto> produtos =
+                _ctx.Produtos.
+                Include(x => x.Categoria).
+                ToList();
+
             return produtos.Count == 0 ? NotFound() : Ok(produtos);
         }
         catch (Exception e)
@@ -32,17 +39,25 @@ public class ProdutoController : ControllerBase
 
     [HttpPost]
     [Route("cadastrar")]
-    public IActionResult Cadastrar([FromBody] Produto produto)
+    public IActionResult Cadastrar([FromBody] ProdutoDTO produtoDTO)
     {
         try
         {
             Categoria? categoria =
-                _ctx.Categorias.Find(produto.CategoriaId);
+                _ctx.Categorias.Find(produtoDTO.CategoriaId);
             if (categoria == null)
             {
                 return NotFound();
             }
-            produto.Categoria = categoria;
+            Produto produto = new Produto
+            {
+                Nome = produtoDTO.Nome,
+                Descricao = produtoDTO.Descricao,
+                Quantidade = produtoDTO.Quantidade,
+                Preco = produtoDTO.Preco,
+                Categoria = categoria,
+                CategoriaId = produtoDTO.CategoriaId
+            };
             _ctx.Produtos.Add(produto);
             _ctx.SaveChanges();
             return Created("", produto);

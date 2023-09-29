@@ -12,8 +12,8 @@ Content-Type: application/json
     "nome" : "Feijão",
     "descricao" : "Tipo A",
     "quantidade" : 150,
-    "preco" : 6,
-    "categoriaId" : 1
+    "preco" : 0,
+    "categoriaId" : 7
 }
 
 ### Remover produto pelo ID
