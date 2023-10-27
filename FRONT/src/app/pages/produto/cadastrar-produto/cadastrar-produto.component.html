@@ -1,0 +1,29 @@
+<h1>Cadastrar Produto</h1>
+
+<div>
+  <label>Nome:</label>
+  <input type="text" [(ngModel)]="nome" />
+</div>
+<div>
+  <label>Descricao:</label>
+  <input type="text" [(ngModel)]="descricao" />
+</div>
+<div>
+  <label>Preço:</label>
+  <input type="text" [(ngModel)]="preco" />
+</div>
+<div>
+  <label>Quantidade:</label>
+  <input type="text" [(ngModel)]="quantidade" />
+</div>
+<div>
+  <label>Categorias:</label>
+  <select [(ngModel)]="categoriaId">
+    <option *ngFor="let c of categorias" value="{{ c.categoriaId }}">
+      {{ c.nome }}
+    </option>
+  </select>
+</div>
+<div>
+  <button (click)="cadastrar()">Cadastrar Produto</button>
+</div>

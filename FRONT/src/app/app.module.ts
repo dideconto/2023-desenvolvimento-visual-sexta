@@ -5,18 +5,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListarProdutoComponent } from './pages/produto/listar-produto/listar-produto.component';
+import { CadastrarProdutoComponent } from './pages/produto/cadastrar-produto/cadastrar-produto.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   //Componentes da aplicação
   declarations: [
     AppComponent,
-    ListarProdutoComponent
+    ListarProdutoComponent,
+    CadastrarProdutoComponent
   ],
   //Bibliotecas externas da aplicação
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

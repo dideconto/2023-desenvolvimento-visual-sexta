@@ -1,14 +1,22 @@
-<ol>
-    <li>
-        Teste
-    </li>
-    <li>
-        Teste
-    </li>
-    <li>
-        Teste
-    </li>
-    <li>
-        Teste
-    </li>
-</ol>
+<h1>Listagem de produtos</h1>
+
+<table id="table">
+  <tr>
+    <th>#</th>
+    <th>Nome</th>
+    <th>Descrição</th>
+    <th>Quantidade</th>
+    <th>Preço</th>
+    <th>Categoria</th>
+    <th>Criado em</th>
+  </tr>
+  <tr *ngFor="let p of produtos">
+    <td>{{ p.produtoId }}</td>
+    <td>{{ p.nome }}</td>
+    <td>{{ p.descricao }}</td>
+    <td>{{ p.quantidade }}</td>
+    <td>{{ p.preco | currency : "BRL" }}</td>
+    <td>{{ p.categoria?.nome }}</td>
+    <td>{{ p.criadoEm | date : "dd/MM/yyyy" }}</td>
+  </tr>
+</table>

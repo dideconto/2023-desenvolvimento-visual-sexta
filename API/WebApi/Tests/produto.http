@@ -9,11 +9,11 @@ POST https://localhost:7083/api/produto/cadastrar
 Content-Type: application/json
 
 {
-    "nome" : "Feijão",
+    "nome" : "Arroz",
     "descricao" : "Tipo A",
     "quantidade" : 150,
-    "preco" : 0,
-    "categoriaId" : 7
+    "preco" : 100,
+    "categoriaId" : 1
 }
 
 ### Remover produto pelo ID
