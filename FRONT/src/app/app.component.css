@@ -6,3 +6,11 @@
     display: flex;
     align-items: center;
 }
+
+.icon{
+    margin-right: 8px;
+}
+
+.content{
+    padding: 8px;
+}

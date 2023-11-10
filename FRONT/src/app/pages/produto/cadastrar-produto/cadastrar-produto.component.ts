@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { Categoria } from "src/app/models/categoria.models";
 import { Produto } from "src/app/models/produto.models";
@@ -17,7 +18,11 @@ export class CadastrarProdutoComponent {
   categoriaId: number = 0;
   categorias: Categoria[] = [];
 
-  constructor(private client: HttpClient, private router: Router) {}
+  constructor(
+    private client: HttpClient,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.client
@@ -48,6 +53,11 @@ export class CadastrarProdutoComponent {
       .subscribe({
         //A requição funcionou
         next: (produto) => {
+          this.snackBar.open("Produto cadastrado com sucesso!!", "E-commerce", {
+            duration: 1500,
+            horizontalPosition: "right",
+            verticalPosition: "top",
+          });
           this.router.navigate(["pages/produto/listar"]);
         },
         //A requição não funcionou

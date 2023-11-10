@@ -10,14 +10,19 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/pages/produto/listar">
         <div class="item">
-          <mat-icon> list </mat-icon>
+          <mat-icon class="icon"> list </mat-icon>
           <span>Listar Produtos</span>
         </div>
       </a>
+      <a mat-list-item routerLink="/pages/produto/cadastrar">
+        <div class="item">
+          <mat-icon class="icon"> add </mat-icon>
+          <span>Cadastrar Produto</span>
+        </div>
+      </a>
     </mat-nav-list>
-    <!-- <a routerLink="/pages/produto/cadastrar"> Cadastrar Produtos</a> -->
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content class="content">
     <router-outlet>
       <!-- Mostrar os componentes selecionados -->
     </router-outlet>

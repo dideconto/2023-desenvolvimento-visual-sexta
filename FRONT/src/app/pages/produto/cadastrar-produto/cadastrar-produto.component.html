@@ -1,29 +1,58 @@
-<h1>Cadastrar Produto</h1>
-
-<div>
-  <label>Nome:</label>
-  <input type="text" [(ngModel)]="nome" />
-</div>
-<div>
-  <label>Descricao:</label>
-  <input type="text" [(ngModel)]="descricao" />
-</div>
-<div>
-  <label>Preço:</label>
-  <input type="text" [(ngModel)]="preco" />
-</div>
-<div>
-  <label>Quantidade:</label>
-  <input type="text" [(ngModel)]="quantidade" />
-</div>
-<div>
-  <label>Categorias:</label>
-  <select [(ngModel)]="categoriaId">
-    <option *ngFor="let c of categorias" value="{{ c.categoriaId }}">
-      {{ c.nome }}
-    </option>
-  </select>
-</div>
-<div>
-  <button (click)="cadastrar()">Cadastrar Produto</button>
-</div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Cadastrar Produto</mat-card-title>
+    <mat-card-subtitle>&nbsp;</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field class="input" id="nome">
+      <mat-label>Nome</mat-label>
+      <input
+        placeholder="Ex. Bolacha"
+        matInput
+        type="text"
+        [(ngModel)]="nome"
+      />
+    </mat-form-field>
+    <mat-form-field class="input" id="descricao">
+      <mat-label>Descrição</mat-label>
+      <input
+        placeholder="Ex. Doce"
+        matInput
+        type="text"
+        [(ngModel)]="descricao"
+      />
+    </mat-form-field>
+    <mat-form-field class="input" id="quantidade">
+      <mat-label>Quantidade</mat-label>
+      <input
+        placeholder="Ex. 1500"
+        matInput
+        type="text"
+        [(ngModel)]="quantidade"
+      />
+    </mat-form-field>
+    <mat-form-field class="input" id="preco">
+      <mat-label>Preço</mat-label>
+      <span matPrefix>R$ &nbsp;</span>
+      <input
+        placeholder="Ex. R$ 15,00"
+        matInput
+        type="text"
+        [(ngModel)]="preco"
+      />
+    </mat-form-field>
+    <mat-form-field class="input" id="categoria">
+      <mat-label>Categoria</mat-label>
+      <mat-select [(ngModel)]="categoriaId">
+        <mat-option *ngFor="let c of categorias" [value]="c.categoriaId">
+          {{ c.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions>
+    <button color="warn" mat-stroked-button (click)="cadastrar()">
+      Cadastrar
+    </button>
+  </mat-card-actions>
+</mat-card>
