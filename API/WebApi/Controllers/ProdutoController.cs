@@ -99,7 +99,10 @@ public class ProdutoController : ControllerBase
             {
                 _ctx.Produtos.Remove(produtoCadastrado);
                 _ctx.SaveChanges();
-                return Ok();
+                return Ok(
+                    _ctx.Produtos.
+                    Include(x => x.Categoria).
+                    ToList());
             }
             return NotFound();
         }

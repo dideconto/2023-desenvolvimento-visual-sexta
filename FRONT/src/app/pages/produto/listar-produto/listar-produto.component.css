@@ -1,8 +1,9 @@
-#table{
+table {
     width: 100%;
-
-}
-
-td{
+  }
+  
+  td,
+  th {
     text-align: center;
-}
+  }
+  
