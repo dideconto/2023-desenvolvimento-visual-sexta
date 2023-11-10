@@ -70,12 +70,12 @@ public class ProdutoController : ControllerBase
     }
 
     [HttpGet]
-    [Route("buscar/{nome}")]
-    public IActionResult Buscar([FromRoute] string nome)
+    [Route("buscar/{id}")]
+    public IActionResult Buscar([FromRoute] int id)
     {
         try
         {
-            Produto? produtoCadastrado = _ctx.Produtos.FirstOrDefault(x => x.Nome == nome);
+            Produto? produtoCadastrado = _ctx.Produtos.FirstOrDefault(x => x.ProdutoId == id);
             if (produtoCadastrado != null)
             {
                 return Ok(produtoCadastrado);
@@ -124,6 +124,13 @@ public class ProdutoController : ControllerBase
                 _ctx.Produtos.FirstOrDefault(x => x.ProdutoId == id);
             if (produtoCadastrado != null)
             {
+                Categoria? categoria =
+                    _ctx.Categorias.Find(produto.CategoriaId);
+                if (categoria == null)
+                {
+                    return NotFound();
+                }
+                produtoCadastrado.Categoria = categoria;
                 produtoCadastrado.Nome = produto.Nome;
                 produtoCadastrado.Descricao = produto.Descricao;
                 produtoCadastrado.Quantidade = produto.Quantidade;

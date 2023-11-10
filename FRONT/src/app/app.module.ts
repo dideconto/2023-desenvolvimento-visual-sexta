@@ -19,6 +19,7 @@ import { ListarProdutoComponent } from "./pages/produto/listar-produto/listar-pr
 import { CadastrarProdutoComponent } from "./pages/produto/cadastrar-produto/cadastrar-produto.component";
 import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AlterarProdutoComponent } from './pages/produto/alterar-produto/alterar-produto.component';
 
 @NgModule({
   //Componentes da aplicação
@@ -26,6 +27,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     AppComponent,
     ListarProdutoComponent,
     CadastrarProdutoComponent,
+    AlterarProdutoComponent,
   ],
   //Bibliotecas externas da aplicação
   imports: [
