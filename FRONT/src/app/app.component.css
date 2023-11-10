@@ -1,0 +1,8 @@
+.container{
+    height: calc(100% - 64px);
+}
+
+.item{
+    display: flex;
+    align-items: center;
+}
