@@ -1,0 +1,18 @@
+<h2>Cadstrar Tarefa</h2>
+<div>
+  <label>Título:</label>
+  <input [(ngModel)]="titulo" />
+</div>
+<div>
+  <label>Descrição:</label>
+  <input [(ngModel)]="descricao" />
+</div>
+<div>
+  <label>Categoria:</label>
+  <select [(ngModel)]="categoriaId">
+    <option *ngFor="let c of categorias" [value]="c.categoriaId">
+      {{ c.nome }}
+    </option>
+  </select>
+</div>
+<div><button (click)="cadastrar()">Cadastrar</button></div>
